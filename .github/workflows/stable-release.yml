@@ -306,8 +306,11 @@ jobs:
             <key>CFBundleExecutable</key><string>Jellyfin2Samsung</string>
             <key>CFBundleIdentifier</key><string>org.madebypatrick.jellyfin2samsung</string>
             <key>CFBundleVersion</key><string>${{ needs.stable-release.outputs.VERSION }}</string>
+            <key>CFBundleShortVersionString</key><string>${{ needs.stable-release.outputs.VERSION }}</string>
             <key>CFBundlePackageType</key><string>APPL</string>
             <key>LSMinimumSystemVersion</key><string>11.0</string>
+
+            <key>CFBundleIconFile</key><string>jellyfin.icns</string>
           </dict>
           </plist>
           EOF
@@ -351,8 +354,11 @@ jobs:
             <key>CFBundleExecutable</key><string>Jellyfin2Samsung</string>
             <key>CFBundleIdentifier</key><string>org.madebypatrick.jellyfin2samsung</string>
             <key>CFBundleVersion</key><string>${{ needs.stable-release.outputs.VERSION }}</string>
+            <key>CFBundleShortVersionString</key><string>${{ needs.stable-release.outputs.VERSION }}</string>
             <key>CFBundlePackageType</key><string>APPL</string>
             <key>LSMinimumSystemVersion</key><string>11.0</string>
+
+            <key>CFBundleIconFile</key><string>jellyfin.icns</string>
           </dict>
           </plist>
           EOF
