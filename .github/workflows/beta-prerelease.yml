@@ -172,7 +172,6 @@ jobs:
           overwrite_files: true
           files: dist/*
           body_path: RELEASE_NOTES.md
-          overwrite_files: true
 
 # ======================================================
 # MACOS (PER-ARCH CLI + APP + DMG)
