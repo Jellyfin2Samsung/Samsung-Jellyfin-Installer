@@ -188,16 +188,27 @@ jobs:
           dotnet-version: 8.0.x
 
       # ---------------- ICON ----------------
-      - name: macOS icon
+      # ---------------- ICON ----------------
+      - name: macOS icon (SVG -> ICNS)
         run: |
-          sips -s format png jellyfin-tizen-logo.svg --out jellyfin.png
-          sips -z 1024 1024 jellyfin.png --out jellyfin.png
+          # Reliable SVG -> PNG conversion on GitHub macOS runners
+          brew install librsvg
 
+          # If the SVG is already in your repo, keep this as-is.
+          # If not, uncomment the curl line below and remove the local reference.
+          # curl -fsSL \
+          #   https://raw.githubusercontent.com/Jellyfin2Samsung/Samsung-Jellyfin-Installer/refs/heads/master/jellyfin-tizen-logo.svg \
+          #   -o jellyfin-tizen-logo.svg
+
+          rsvg-convert -w 1024 -h 1024 jellyfin-tizen-logo.svg -o jellyfin.png
+
+          rm -rf icon.iconset
           mkdir icon.iconset
           for s in 16 32 128 256 512; do
             sips -z $s $s jellyfin.png --out icon.iconset/icon_${s}x${s}.png
             sips -z $((s*2)) $((s*2)) jellyfin.png --out icon.iconset/icon_${s}x${s}@2x.png
           done
+
           iconutil -c icns icon.iconset -o jellyfin.icns
 
       # ---------------- ARM64 ----------------
